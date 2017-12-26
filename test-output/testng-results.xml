@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="202933" started-at="2017-12-15T13:20:31Z" finished-at="2017-12-15T13:23:54Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="202933" started-at="2017-12-15T13:20:31Z" finished-at="2017-12-15T13:23:54Z">
+      <class name="suites.sanity.Test_Users">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:suites.sanity.Test_Users@39c0f4a]" name="beforeSuite" is-config="true" duration-ms="4867" started-at="2017-12-15T18:20:26Z" finished-at="2017-12-15T18:20:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method status="PASS" signature="Test_LoginValidation()[pri:1, instance:suites.sanity.Test_Users@39c0f4a]" name="Test_LoginValidation" duration-ms="53069" started-at="2017-12-15T18:20:31Z" finished-at="2017-12-15T18:21:24Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test_LoginValidation -->
+        <test-method status="PASS" signature="AfterMethod()[pri:0, instance:suites.sanity.Test_Users@39c0f4a]" name="AfterMethod" is-config="true" duration-ms="250" started-at="2017-12-15T18:21:24Z" finished-at="2017-12-15T18:21:24Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AfterMethod -->
+        <test-method status="PASS" signature="Test_OnboardValidation()[pri:2, instance:suites.sanity.Test_Users@39c0f4a]" name="Test_OnboardValidation" duration-ms="149521" started-at="2017-12-15T18:21:24Z" finished-at="2017-12-15T18:23:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test_OnboardValidation -->
+        <test-method status="PASS" signature="AfterMethod()[pri:0, instance:suites.sanity.Test_Users@39c0f4a]" name="AfterMethod" is-config="true" duration-ms="74" started-at="2017-12-15T18:23:54Z" finished-at="2017-12-15T18:23:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AfterMethod -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:suites.sanity.Test_Users@39c0f4a]" name="tearDown" is-config="true" duration-ms="2438" started-at="2017-12-15T18:23:54Z" finished-at="2017-12-15T18:23:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- suites.sanity.Test_Users -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
