@@ -15,5 +15,15 @@ public class Pages {
 		PageFactory.initElements(BaseCase.driver, pg);
 		return pg;
 	}
+	public static Navigation_Page Navigation_Page() {
+		Navigation_Page pg = new Navigation_Page(BaseCase.driver);
+		PageFactory.initElements(BaseCase.driver, pg);
+		return pg;
+	}
+	public static CreateVenture CreateVenture() {
+		CreateVenture pg = new CreateVenture(BaseCase.driver);
+		PageFactory.initElements(BaseCase.driver, pg);
+		return pg;
+	}
 
-}//On_Boadring_Process
+}//CreateVenture

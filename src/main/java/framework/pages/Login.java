@@ -14,7 +14,7 @@ public class Login {
 	}
 	public String LogintoSpark() {
 		String fetch_error = null;
-		String display_error = null;
+		String display_error = "";
 		try{
 		driver.get(DataSet.baseURL);
 		WebElement Elem = driver.findElement(By.linkText("Apply to Spark xyz"));
