@@ -25,5 +25,10 @@ public class Pages {
 		PageFactory.initElements(BaseCase.driver, pg);
 		return pg;
 	}
+	public static User_Profile User_Profile() {
+		User_Profile pg = new User_Profile(BaseCase.driver);
+		PageFactory.initElements(BaseCase.driver, pg);
+		return pg;
+	}
 
 }//CreateVenture

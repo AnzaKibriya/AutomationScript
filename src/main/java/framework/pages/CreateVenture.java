@@ -22,12 +22,72 @@ public class CreateVenture {
 	public CreateVenture(WebDriver Driver) {
 		driver = Driver;
 	}
-	
+	public String Neg_Ven_Title(){
+		String fetch_error = null;
+		String display_error = "";
+		try{
+			btnNext.click();
+			try{
+				WebElement error = driver.findElement(By.id("project_title-error"));
+				String err_msg = error.getText();
+				if (err_msg.contains("This field is required.")){
+					System.out.println("Correct Error Message is displayed");
+					}
+				else{
+					display_error= "error message is not shown properly";
+				}
+				
+				driver.findElement(By.id("project_title")).sendKeys("Te");
+				btnNext.click();
+				err_msg = error.getText();
+				if (err_msg.contains("Please enter at least 3 characters.")){
+					System.out.println("Correct Error Message is displayed");
+					}
+				else{
+					display_error= "error message is not shown properly";
+				}
+					
+		}
+			catch(Exception e){
+			    System. out.println("In Exception block.");
+			    fetch_error = e.getMessage();
+			}
+		}
+		catch(Exception e){
+		    System. out.println("In Exception block.");
+		    fetch_error = e.getMessage();
+		}
+		finally{
+			try{
+				driver.findElement(By.className("error-message"));
+				System.out.println("On Error page '404 error' ");
+			}
+			catch(Exception e){
+				System.out.println("blah");
+			}
+    	 //System.out.println(error);
+    	 if (fetch_error != null){
+    	 fetch_error = fetch_error.toString();
+//    	 System.out.println(error);
+    	 String[] errorarray = fetch_error.split("Command duration or timeout");
+    	 for(String w :errorarray){  
+         System.out.println(w);
+         display_error = w;
+         break;
+     }
+		
+	}
+		}
+		return display_error;
+		
+	}
 	public String Ven_Title(String name){
 		String fetch_error = null;
 		String display_error = "";
 		try{
-			driver.findElement(By.id("project_title")).sendKeys(name);
+			WebElement Title = driver.findElement(By.id("project_title"));
+			Title.clear();
+			Title.sendKeys(name);
 			btnNext.click();
 		}
 		catch(Exception e){
@@ -58,6 +118,48 @@ public class CreateVenture {
 		return display_error;
 		
 	}
+	public String Neg_Ven_Bus(){
+		String fetch_error = null;
+		String display_error = "";
+		try{
+			 btnNext.click();
+			 try {
+				 WebElement St_err = driver.findElement(By.id("project[business_stage]-error"));
+				 WebElement type_err= driver.findElement(By.id("project[business_type]-error"));
+				 WebElement loc_err = driver.findElement(By.id("project_location_aux-error"));
+			 }
+			 catch(Exception e){
+				    System. out.println("In Exception block.");
+				    fetch_error = e.getMessage();
+		}
+		}
+		catch(Exception e){
+		    System. out.println("In Exception block.");
+		    fetch_error = e.getMessage();
+		}
+		finally{
+			try{
+				driver.findElement(By.className("error-message"));
+				System.out.println("On Error page '404 error' ");
+			}
+			catch(Exception e){
+				System.out.println("blah");
+			}
+    	 //System.out.println(error);
+    	 if (fetch_error != null){
+    	 fetch_error = fetch_error.toString();
+//    	 System.out.println(error);
+    	 String[] errorarray = fetch_error.split("Command duration or timeout");
+    	 for(String w :errorarray){  
+         System.out.println(w);
+         display_error = w;
+         break;
+     }
+		
+	}
+		}
+		return display_error;
+	} 
 	public String Ven_Business(String stage, String Type, String Location){
 		String fetch_error = null;
 		String display_error = "";
@@ -111,13 +213,114 @@ public class CreateVenture {
 		}
 		return display_error;
 	}
-
+public String Neg_ele_pit(){
+	String fetch_error = null;
+	String display_error = "";
+	try{
+		btnNext.click();
+		try{
+			WebElement Er_ele= driver.findElement(By.id("project_one_liner_about-error"));
+			String err_msg = Er_ele.getText();
+			if (err_msg.contains("This field is required.")){
+				System.out.println("Correct Error Message is displayed");
+				}
+			else{
+				display_error= "error message is not shown properly";
+			}
+			
+			driver.findElement(By.id("project_one_liner_about")).sendKeys("Te");
+			btnNext.click();
+			err_msg = Er_ele.getText();
+			if (err_msg.contains("Please enter at least 10 characters.")){
+				System.out.println("Correct Error Message is displayed");
+				}
+			else{
+				display_error= "error message is not shown properly";
+			}
+			
+		}
+		catch(Exception e){
+		    System. out.println("In Exception block.");
+		    fetch_error = e.getMessage();
+		}
+	}
+	catch(Exception e){
+	    System. out.println("In Exception block.");
+	    fetch_error = e.getMessage();
+	}
+	finally{
+		try{
+			driver.findElement(By.className("error-message"));
+			System.out.println("On Error page '404 error' ");
+		}
+		catch(Exception e){
+			System.out.println("blah");
+		}
+	 //System.out.println(error);
+	 if (fetch_error != null){
+	 fetch_error = fetch_error.toString();
+//	 System.out.println(error);
+	 String[] errorarray = fetch_error.split("Command duration or timeout");
+	 for(String w :errorarray){  
+     System.out.println(w);
+     display_error = w;
+     break;
+ }
+	
+}
+	}
+	return display_error;
+}
 public String elevator_pitch(String elevator){
 	String fetch_error = null;
 	String display_error = "";
 	try{
-		driver.findElement(By.id("project_one_liner_about")).sendKeys(elevator);
+		WebElement ele = driver.findElement(By.id("project_one_liner_about"));
+		ele.clear();
+		ele.sendKeys(elevator);
 		btnNext.click();
+	}
+	catch(Exception e){
+	    System. out.println("In Exception block.");
+	    fetch_error = e.getMessage();
+	}
+	finally{
+		try{
+			driver.findElement(By.className("error-message"));
+			System.out.println("On Error page '404 error' ");
+		}
+		catch(Exception e){
+			System.out.println("blah");
+		}
+	 //System.out.println(error);
+	 if (fetch_error != null){
+	 fetch_error = fetch_error.toString();
+//	 System.out.println(error);
+	 String[] errorarray = fetch_error.split("Command duration or timeout");
+	 for(String w :errorarray){  
+     System.out.println(w);
+     display_error = w;
+     break;
+ }
+	
+}
+	}
+	return display_error;
+}
+public String Neg_business_Problem(){
+	String fetch_error = null;
+	String display_error = "";
+	try{
+		 btnNext.click();
+		 try{
+			 WebElement prob_err= driver.findElement(By.id("problem-error-statement"));
+			 
+		 }
+		 catch(Exception e){
+			    System. out.println("In Exception block.");
+			    fetch_error = e.getMessage();
+			}
+ 
 	}
 	catch(Exception e){
 	    System. out.println("In Exception block.");
@@ -186,6 +389,48 @@ public String business_problem(String problem){
 	}
 	return display_error;
 }
+public String Neg_business_solution(){
+	String fetch_error = null;
+	String display_error = "";
+	try{
+		 btnNext.click();
+		 try{
+			 WebElement Sol_err= driver.findElement(By.id("solution-error-statement"));
+			 
+		 }
+		 catch(Exception e){
+			    System. out.println("In Exception block.");
+			    fetch_error = e.getMessage();
+			}
+ 
+	}
+	catch(Exception e){
+	    System. out.println("In Exception block.");
+	    fetch_error = e.getMessage();
+	}
+	finally{
+		try{
+			driver.findElement(By.className("error-message"));
+			System.out.println("On Error page '404 error' ");
+		}
+		catch(Exception e){
+			System.out.println("blah");
+		}
+	 //System.out.println(error);
+	 if (fetch_error != null){
+	 fetch_error = fetch_error.toString();
+//	 System.out.println(error);
+	 String[] errorarray = fetch_error.split("Command duration or timeout");
+	 for(String w :errorarray){  
+     System.out.println(w);
+     display_error = w;
+     break;
+ }
+	
+}
+	}
+	return display_error;
+}
 public String business_solution(String solution){
 	String fetch_error = null;
 	String display_error = "";
@@ -226,7 +471,48 @@ public String business_solution(String solution){
 	}
 	return display_error;
 }
-
+public String Neg_interest_form(){
+	String fetch_error = null;
+	String display_error = "";
+	try{
+		 btnNext.click();
+		 try{
+			 WebElement Sol_err= driver.findElement(By.id("categories-message-error"));
+			 
+		 }
+		 catch(Exception e){
+			    System. out.println("In Exception block.");
+			    fetch_error = e.getMessage();
+			}
+ 
+	}
+	catch(Exception e){
+	    System. out.println("In Exception block.");
+	    fetch_error = e.getMessage();
+	}
+	finally{
+		try{
+			driver.findElement(By.className("error-message"));
+			System.out.println("On Error page '404 error' ");
+		}
+		catch(Exception e){
+			System.out.println("blah");
+		}
+	 //System.out.println(error);
+	 if (fetch_error != null){
+	 fetch_error = fetch_error.toString();
+//	 System.out.println(error);
+	 String[] errorarray = fetch_error.split("Command duration or timeout");
+	 for(String w :errorarray){  
+     System.out.println(w);
+     display_error = w;
+     break;
+ }
+	
+}
+	}
+	return display_error;
+}
 public String interest_form(String [] interest){
 	String fetch_error = null;
 	String display_error = "";
@@ -271,11 +557,64 @@ public String interest_form(String [] interest){
 	}
 	return display_error;	
 }
+public String Neg_Add_Teammember(){
+	String fetch_error = null;
+	String display_error = "";
+	try{
+		WebElement Eid= driver.findElement(By.id("team_email"));
+		Eid.sendKeys("asd");
+		driver.findElement(By.id("add-team-member")).click();
+		try {
+			WebElement email_error = driver.findElement(By.id("team_email-error"));
+		  String Err_msg=  email_error.getText();
+		  if (Err_msg.contains("Please enter a valid email address.")){
+			System.out.println("Proper display of error message");  
+		  }
+		  else {
+				display_error= "email error is not working properly";
+				
+			}
+		}
+		catch(Exception e){
+		    System. out.println("In Exception block.");
+		    fetch_error = e.getMessage();
+		}
+		
+	}
+	catch(Exception e){
+	    System. out.println("In Exception block.");
+	    fetch_error = e.getMessage();
+	}
+	finally{
+		try{
+			driver.findElement(By.className("error-message"));
+			System.out.println("On Error page '404 error' ");
+		}
+		catch(Exception e){
+			System.out.println("blah");
+		}
+	 //System.out.println(error);
+	 if (fetch_error != null){
+	 fetch_error = fetch_error.toString();
+//	 System.out.println(error);
+	 String[] errorarray = fetch_error.split("Command duration or timeout");
+	 for(String w :errorarray){  
+     System.out.println(w);
+     display_error = w;
+     break;
+ }
+	
+}
+	}
+	return display_error;	
+}
 public String Add_Teammember(String e_id, String position){
 	String fetch_error = null;
 	String display_error = "";
 	try{
-		driver.findElement(By.id("team_email")).sendKeys(e_id);
+		WebElement Eid= driver.findElement(By.id("team_email"));
+		Eid.clear();
+		Eid.sendKeys(e_id);
 		driver.findElement(By.id("team_title_position")).sendKeys(position);
 		driver.findElement(By.id("add-team-member")).click();
 		Extensions.WaitForElementVisibleAndClickable(btnNext);
@@ -407,11 +746,47 @@ public String network_interest(){
 	}
 	return display_error;	
 }
+public String Neg_Venture_website(){
+	String fetch_error = null;
+	String display_error = "";
+	try{
+		driver.findElement(By.id("project_website")).sendKeys("adghgfd");
+		 btnNext.click();
+	}
+	catch(Exception e){
+	    System. out.println("In Exception block.");
+	    fetch_error = e.getMessage();
+	}
+	finally{
+		try{
+			driver.findElement(By.className("error-message"));
+			System.out.println("On Error page '404 error' ");
+		}
+		catch(Exception e){
+			System.out.println("blah");
+		}
+	 //System.out.println(error);
+	 if (fetch_error != null){
+	 fetch_error = fetch_error.toString();
+//	 System.out.println(error);
+	 String[] errorarray = fetch_error.split("Command duration or timeout");
+	 for(String w :errorarray){  
+     System.out.println(w);
+     display_error = w;
+     break;
+ }
+	
+}
+	}
+	return display_error;
+}
 public String Venture_website(String site){
 	String fetch_error = null;
 	String display_error = "";
 	try{
-		 driver.findElement(By.id("project_website")).sendKeys(site);
+		WebElement V_web=  driver.findElement(By.id("project_website"));
+		V_web.clear();
+		V_web.sendKeys(site);
 		 btnNext.click();
 	}
 	catch(Exception e){
@@ -518,8 +893,6 @@ public String verify_venture(String V_Name){
 	}
 	return display_error;
 	}
-	
-
 }
 	
 	

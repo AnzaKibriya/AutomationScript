@@ -4,6 +4,7 @@ import framework.helper.Extensions;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -225,6 +226,8 @@ public class On_Boadring_Process {
 		WebElement sch= driver.findElement(By.id("onboarding_school"));
 		sch.clear();
 		sch.sendKeys(school);
+		sch.sendKeys(Keys.DOWN);
+	    sch.sendKeys(Keys.ENTER);
 		WebElement deg = driver.findElement(By.id("onboarding_degree"));
 		deg.clear();
 		deg.sendKeys(degree);

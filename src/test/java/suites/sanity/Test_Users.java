@@ -20,9 +20,8 @@ public class Test_Users  extends BaseCase {
 		System.out.println("===========================================================");
 
 		logger = report.startTest(" User Login Validation");
-		logger.log(LogStatus.INFO, "Go to Website");
 		logger.log(LogStatus.INFO, "Sign In through FB");
-		Pages.Login().LogintoSpark();;
+		Pages.Login().LogintoSpark();
 		logger.log(LogStatus.PASS, "Log in to SparkXYZ successfuly");
 		
 	}
@@ -58,7 +57,7 @@ public class Test_Users  extends BaseCase {
 				logger.log(LogStatus.PASS, "Education Page is successful");
 				}
 		logger.log(LogStatus.INFO, "Fill Education form On-Boarding Process");
-		String Statusedu= Pages.On_Boadring_Process().Education_Form("GCU", "BSCS", "CS", "8", "2012", "12", "2016");
+		String Statusedu= Pages.On_Boadring_Process().Education_Form("UCLA", "BSCS", "CS", "8", "2012", "12", "2016");
 		if (Statusedu !=""){
 			logger.log(LogStatus.FAIL, Statusedu);
 			}
@@ -123,7 +122,7 @@ public class Test_Users  extends BaseCase {
 				logger.log(LogStatus.PASS, "Reason page is successful");
 				}
 		}
-	@Test(priority = 3, enabled = true)
+	@Test(priority = 3, enabled = false)
 	public void Test_VentureCreation() throws InterruptedException {
 		System.out.println("===========================================================");
 		System.out.println("================= Test_VentureCreation ====================");
@@ -137,6 +136,14 @@ public class Test_Users  extends BaseCase {
 			else{
 				logger.log(LogStatus.PASS, "Goto Venture Creation page is successful");
 				}
+		logger.log(LogStatus.INFO, "Negative Venture Name");
+		String NegTitle = Pages.CreateVenture().Neg_Ven_Title();
+		if ( NegTitle !=""){
+			logger.log(LogStatus.FAIL, NegTitle);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Negative Venture Title is successful");
+				}
 		logger.log(LogStatus.INFO, "Add Venture Name");
 		String Title = "TestingVenture";
 		String VenTitle = Pages.CreateVenture().Ven_Title(Title);
@@ -144,7 +151,15 @@ public class Test_Users  extends BaseCase {
 			logger.log(LogStatus.FAIL, VenTitle);
 			}
 			else{
-				logger.log(LogStatus.PASS, "Goto Venture Creation page is successful");
+				logger.log(LogStatus.PASS, " Venture Title  is successful");
+				}
+		logger.log(LogStatus.INFO, "Negative Venture Business Stage");
+		String NegBusinessStage = Pages.CreateVenture().Neg_Ven_Bus();
+		if (NegBusinessStage !=""){
+			logger.log(LogStatus.FAIL,  NegBusinessStage);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Negative Venture Business Stage is successful");
 				}
 		logger.log(LogStatus.INFO, "Venture Business Stage");
 		String VenBusinessStage = Pages.CreateVenture().Ven_Business("Business plan mapped out", "Venture Capital Backed", "Lahore");
@@ -152,7 +167,15 @@ public class Test_Users  extends BaseCase {
 			logger.log(LogStatus.FAIL,  VenBusinessStage);
 			}
 			else{
-				logger.log(LogStatus.PASS, "Goto Venture Creation page is successful");
+				logger.log(LogStatus.PASS, "Venture Business Stage is successful");
+				}
+		logger.log(LogStatus.INFO, "Negative Venture Elevator Pitch");
+		String NegElevatorpitch = Pages.CreateVenture().Neg_ele_pit();
+		if (NegElevatorpitch !=""){
+			logger.log(LogStatus.FAIL,  NegElevatorpitch);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Negative Venture Elevator Pitch is successful");
 				}
 		logger.log(LogStatus.INFO, "Venture Elevator Pitch");
 		String VenElevatorpitch = Pages.CreateVenture().elevator_pitch("if opportunity doesn't knock, build a door.- Milton Berle");
@@ -160,7 +183,15 @@ public class Test_Users  extends BaseCase {
 			logger.log(LogStatus.FAIL,  VenElevatorpitch);
 			}
 			else{
-				logger.log(LogStatus.PASS, "Goto Venture Creation page is successful");
+				logger.log(LogStatus.PASS, "Venture Elevator Pitch is successful");
+				}
+		logger.log(LogStatus.INFO, "Negative Venture for Problem");
+		String NegProblem = Pages.CreateVenture().Neg_business_Problem();
+		if (NegProblem !=""){
+			logger.log(LogStatus.FAIL,  NegProblem);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Negatuve Venture for Problem is successful");
 				}
 		logger.log(LogStatus.INFO, "Venture for Problem");
 		String VenProblem = Pages.CreateVenture().business_problem("Spark xyz helps students and entrepreneurs connect across disciplines to create better teams,network, and avoid the pitfalls of founding.");
@@ -168,7 +199,15 @@ public class Test_Users  extends BaseCase {
 			logger.log(LogStatus.FAIL,  VenProblem);
 			}
 			else{
-				logger.log(LogStatus.PASS, "Goto Venture Creation page is successful");
+				logger.log(LogStatus.PASS, "Venture for Problem successful");
+				}
+		logger.log(LogStatus.INFO, "Negative Proposed Solution for Venture");
+		String NegSolution = Pages.CreateVenture().Neg_business_solution();
+		if ( NegSolution !=""){
+			logger.log(LogStatus.FAIL, NegSolution);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Negative Proposed Solution for Venture is successful");
 				}
 		logger.log(LogStatus.INFO, "Proposed Solution for Venture");
 		String VenSolution = Pages.CreateVenture().business_solution("Spark xyz helps students and entrepreneurs connect across disciplines to create better teams,network, and avoid the pitfalls of founding.");
@@ -176,7 +215,15 @@ public class Test_Users  extends BaseCase {
 			logger.log(LogStatus.FAIL, VenSolution);
 			}
 			else{
-				logger.log(LogStatus.PASS, "Goto Venture Creation page is successful");
+				logger.log(LogStatus.PASS, "Proposed Solution for Venture is successful");
+				}
+		logger.log(LogStatus.INFO, "Negative Interest of Venture");
+		String Neginterest = Pages.CreateVenture().Neg_interest_form();
+		if ( Neginterest !=""){
+			logger.log(LogStatus.FAIL, Neginterest);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Negative Interest of Venture is successful");
 				}
 		String[] interestArray = new String[]{"DESIGN","ENERGY","ART","PR"};
 		logger.log(LogStatus.INFO, "Interest of Venture");
@@ -185,15 +232,23 @@ public class Test_Users  extends BaseCase {
 			logger.log(LogStatus.FAIL, Veninterest);
 			}
 			else{
-				logger.log(LogStatus.PASS, "Goto Venture Creation page is successful");
+				logger.log(LogStatus.PASS, "Interest of Venture is successful");
 				}
+		logger.log(LogStatus.INFO, "Negative Add Team Member");
+		String NegTeamMember = Pages.CreateVenture().Neg_Add_Teammember();
+		if ( NegTeamMember !=""){
+			logger.log(LogStatus.FAIL,NegTeamMember);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Negative Add Team Member is successful");
+			}
 		logger.log(LogStatus.INFO, "Add Team Member");
 		String VenTeamMember = Pages.CreateVenture().Add_Teammember("lokatkholi@gmail.com", "QA");
 		if ( VenTeamMember !=""){
 			logger.log(LogStatus.FAIL,VenTeamMember);
 			}
 			else{
-				logger.log(LogStatus.PASS, "Goto Venture Creation page is successful");
+				logger.log(LogStatus.PASS, "Add Team Member is successful");
 			}
 		logger.log(LogStatus.INFO, "Add Position");
 		String[] primaryArray = new String[]{"BUSINESS","EDUCATION"};
@@ -203,7 +258,7 @@ public class Test_Users  extends BaseCase {
 			logger.log(LogStatus.FAIL,VenPosition);
 			}
 			else{
-				logger.log(LogStatus.PASS, "Goto Venture Creation page is successful");
+				logger.log(LogStatus.PASS, "Add Position is successful");
 			}	
 		logger.log(LogStatus.INFO, "Networking Venture");
 		String Vennetwork = Pages.CreateVenture().network_interest();
@@ -211,7 +266,7 @@ public class Test_Users  extends BaseCase {
 			logger.log(LogStatus.FAIL,Vennetwork);
 			}
 			else{
-				logger.log(LogStatus.PASS, "Goto Venture Creation page is successful");
+				logger.log(LogStatus.PASS, "Networking Venture is successful");
 			}
 		logger.log(LogStatus.INFO, "Venture Website");
 		String Venwebsite = Pages.CreateVenture().Venture_website("spark-io-staging.herokuapp.com");
@@ -219,7 +274,7 @@ public class Test_Users  extends BaseCase {
 			logger.log(LogStatus.FAIL,Venwebsite);
 			}
 			else{
-				logger.log(LogStatus.PASS, "Goto Venture Creation page is successful");
+				logger.log(LogStatus.PASS, "Venture Website is successful");
 			}
 		logger.log(LogStatus.INFO, "Upload files");
 		String Venupload = Pages.CreateVenture().Venture_FilesUpload();
@@ -227,7 +282,7 @@ public class Test_Users  extends BaseCase {
 			logger.log(LogStatus.FAIL,Venupload);
 			}
 			else{
-				logger.log(LogStatus.PASS, "Goto Venture Creation page is successful");
+				logger.log(LogStatus.PASS, "Upload files is successful");
 			}
 		logger.log(LogStatus.INFO, "Verify Venture");
 		String Venverify = Pages.CreateVenture().verify_venture(Title);
@@ -235,8 +290,110 @@ public class Test_Users  extends BaseCase {
 			logger.log(LogStatus.FAIL,Venverify);
 			}
 			else{
-				logger.log(LogStatus.PASS, "Goto Venture Creation page is successful");
+				logger.log(LogStatus.PASS, "Verify Venture is successful");
 			}
 	}
 	
+	@Test(priority = 4, enabled = true)
+	public void Test_UserProfile() throws InterruptedException {
+		System.out.println("===========================================================");
+		System.out.println("================= Test_UserProfile ====================");
+		System.out.println("===========================================================");
+		logger = report.startTest("Test_UserProfile");
+		String Navigation = Pages.Navigation_Page().GotoProfilePage();
+		if (Navigation !=""){
+			logger.log(LogStatus.FAIL, Navigation);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Goto User Profile page is successful");
+				}
+		logger.log(LogStatus.INFO, "Verifying both Negative Positive Scenarios of Adding Experience to User Profile");
+//		String Expmessgae = Pages.User_Profile().Add_new_experience("TestingExp", "KTM", "2", "2010", "5", "2015");
+//		if (Expmessgae != ""){
+//			if (Expmessgae.contains("Negative Scenario Error:")){
+//				logger.log(LogStatus.FAIL,Expmessgae);
+//				logger.log(LogStatus.PASS, "Experience Record gets saved");	
+//			}
+//			else{
+//				logger.log(LogStatus.PASS, "Negative Scenarios of Experience Record are passed");	
+//				logger.log(LogStatus.FAIL,Expmessgae);
+//			}	
+//		}
+//		else{
+//			logger.log(LogStatus.PASS, "Negative Scenarios of Experience Record are passed");
+//			logger.log(LogStatus.PASS, "Experience Record gets saved");
+//		}
+//		logger.log(LogStatus.INFO, "Verifying both Negative Positive Scenarios of Adding Education to User Profile");
+		String SchoolTitle= "Ghirardelli Square";
+		String Edumessgae = Pages.User_Profile().Add_new_education(SchoolTitle, "CS", "CS","2", "2010", "5", "2015");
+		if (Edumessgae != ""){
+			if (Edumessgae.contains("Negative Scenario Error:")){
+				logger.log(LogStatus.FAIL,Edumessgae);
+				logger.log(LogStatus.PASS, "Education Record gets saved");	
+			}
+			else{
+				logger.log(LogStatus.PASS, "Negative Scenarios of Education Record are passed");	
+				logger.log(LogStatus.FAIL,Edumessgae);
+			}	
+		}
+		else{
+			logger.log(LogStatus.PASS, "Negative Scenarios of Education Record are passed");
+			logger.log(LogStatus.PASS, "Education Record gets saved");
+		}
+		String deledu = Pages.User_Profile().delete_eduction(SchoolTitle);
+		if ( deledu !=""){
+			logger.log(LogStatus.FAIL,deledu);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Venture Website is successful");
+			}
+//		logger.log(LogStatus.INFO, "Verifying both Negative Positive Scenarios of Adding Volunteer Experience to User Profile");
+//		String VolExpmessgae = Pages.User_Profile().Add_new_volunteerexp("bbl", "Test", "Test", "11", "2016", "5", "2017");
+//		if (VolExpmessgae != ""){
+//			if (VolExpmessgae.contains("Negative Scenario Error:")){
+//				logger.log(LogStatus.FAIL,VolExpmessgae);
+//				logger.log(LogStatus.PASS, "Volunteer Experience Record gets saved");	
+//			}
+//			else{
+//				logger.log(LogStatus.PASS, "Negative Scenarios of Volunteer Experience Record are passed");	
+//				logger.log(LogStatus.FAIL,VolExpmessgae);
+//			}	
+//		}
+//		else{
+//			logger.log(LogStatus.PASS, "Negative Scenarios of Volunteer Experience Record are passed");
+//			logger.log(LogStatus.PASS, "Volunteer Experience Record gets saved");
+//		}
+//		logger.log(LogStatus.INFO, "Verifying both Negative Positive Scenarios of Adding Group to User Profile");
+//		String groupmessgae = Pages.User_Profile().Add_new_group("BBL", "QA", "5", "2000", "2", "2001");
+//		if (groupmessgae != ""){
+//			if (groupmessgae.contains("Negative Scenario Error:")){
+//				logger.log(LogStatus.FAIL,groupmessgae);
+//				logger.log(LogStatus.PASS, "Group Record gets saved");	
+//			}
+//			else{
+//				logger.log(LogStatus.PASS, "Negative Scenarios of Group Record are passed");	
+//				logger.log(LogStatus.FAIL,groupmessgae);
+//			}	
+//		}
+//		else{
+//			logger.log(LogStatus.PASS, "Negative Scenarios of Group Record are passed");
+//			logger.log(LogStatus.PASS, "Group Record gets saved");
+//		}
+//		logger.log(LogStatus.INFO, "Verifying both Negative Positive Scenarios of Adding AWard to User Profile");
+//		String awardmessgae = Pages.User_Profile().Add_new_award("Rising Talent", "KTM", "12", "2017");
+//		if (awardmessgae != ""){
+//			if (awardmessgae.contains("Negative Scenario Error:")){
+//				logger.log(LogStatus.FAIL,awardmessgae);
+//				logger.log(LogStatus.PASS, "AWard Record gets saved");	
+//			}
+//			else{
+//				logger.log(LogStatus.PASS, "Negative Scenarios of Award Record are passed");	
+//				logger.log(LogStatus.FAIL,awardmessgae);
+//			}	
+//		}
+//		else{
+//			logger.log(LogStatus.PASS, "Negative Scenarios of Award Record are passed");
+//			logger.log(LogStatus.PASS, "Award Record gets saved");
+//		}
+	}	
 }

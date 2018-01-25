@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="1" total="3" passed="2">
+<testng-results skipped="0" failed="0" ignored="2" total="4" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="290915" started-at="2018-01-05T10:39:59Z" finished-at="2018-01-05T10:44:50Z">
+  <suite name="Default suite" duration-ms="205271" started-at="2018-01-25T11:58:04Z" finished-at="2018-01-25T12:01:29Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="290915" started-at="2018-01-05T10:39:59Z" finished-at="2018-01-05T10:44:50Z">
+    <test name="Default test" duration-ms="205271" started-at="2018-01-25T11:58:04Z" finished-at="2018-01-25T12:01:29Z">
       <class name="suites.sanity.Test_Users">
-        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:suites.sanity.Test_Users@39c0f4a]" name="beforeSuite" is-config="true" duration-ms="5023" started-at="2018-01-05T15:39:54Z" finished-at="2018-01-05T15:39:59Z">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:suites.sanity.Test_Users@3911c2a7]" name="beforeSuite" is-config="true" duration-ms="5056" started-at="2018-01-25T16:57:59Z" finished-at="2018-01-25T16:58:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method status="PASS" signature="Test_LoginValidation()[pri:1, instance:suites.sanity.Test_Users@39c0f4a]" name="Test_LoginValidation" duration-ms="64716" started-at="2018-01-05T15:39:59Z" finished-at="2018-01-05T15:41:04Z">
+        <test-method status="PASS" signature="Test_LoginValidation()[pri:1, instance:suites.sanity.Test_Users@3911c2a7]" name="Test_LoginValidation" duration-ms="117942" started-at="2018-01-25T16:58:04Z" finished-at="2018-01-25T17:00:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Test_LoginValidation -->
-        <test-method status="PASS" signature="AfterMethod()[pri:0, instance:suites.sanity.Test_Users@39c0f4a]" name="AfterMethod" is-config="true" duration-ms="255" started-at="2018-01-05T15:41:04Z" finished-at="2018-01-05T15:41:04Z">
+        <test-method status="PASS" signature="AfterMethod()[pri:0, instance:suites.sanity.Test_Users@3911c2a7]" name="AfterMethod" is-config="true" duration-ms="279" started-at="2018-01-25T17:00:02Z" finished-at="2018-01-25T17:00:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AfterMethod -->
-        <test-method status="PASS" signature="Test_VentureCreation()[pri:3, instance:suites.sanity.Test_Users@39c0f4a]" name="Test_VentureCreation" duration-ms="225855" started-at="2018-01-05T15:41:04Z" finished-at="2018-01-05T15:44:50Z">
+        <test-method status="PASS" signature="Test_UserProfile()[pri:4, instance:suites.sanity.Test_Users@3911c2a7]" name="Test_UserProfile" duration-ms="86968" started-at="2018-01-25T17:00:02Z" finished-at="2018-01-25T17:01:29Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Test_VentureCreation -->
-        <test-method status="PASS" signature="AfterMethod()[pri:0, instance:suites.sanity.Test_Users@39c0f4a]" name="AfterMethod" is-config="true" duration-ms="62" started-at="2018-01-05T15:44:50Z" finished-at="2018-01-05T15:44:50Z">
+        </test-method> <!-- Test_UserProfile -->
+        <test-method status="PASS" signature="AfterMethod()[pri:0, instance:suites.sanity.Test_Users@3911c2a7]" name="AfterMethod" is-config="true" duration-ms="55" started-at="2018-01-25T17:01:29Z" finished-at="2018-01-25T17:01:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AfterMethod -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:suites.sanity.Test_Users@39c0f4a]" name="tearDown" is-config="true" duration-ms="2861" started-at="2018-01-05T15:44:50Z" finished-at="2018-01-05T15:44:53Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:suites.sanity.Test_Users@3911c2a7]" name="tearDown" is-config="true" duration-ms="3987" started-at="2018-01-25T17:01:29Z" finished-at="2018-01-25T17:01:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

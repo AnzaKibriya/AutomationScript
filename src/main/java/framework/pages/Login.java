@@ -17,8 +17,9 @@ public class Login {
 		String display_error = "";
 		try{
 		driver.get(DataSet.baseURL);
-		WebElement Elem = driver.findElement(By.linkText("Apply to Spark xyz"));
-		Elem.click();
+//		WebElement Elem = driver.findElement(By.linkText("Apply to Spark xyz"));
+//		Elem.click();
+		driver.findElement(By.xpath("//*[@id='example-menu']/div[2]/ul/li[4]/a")).click();		
 		Extensions.WaitForPageFullyLoaded();
 		Extensions.ScrollDownPage();
 		WebElement elem1= driver.findElement(By.className("facebook-btn"));
