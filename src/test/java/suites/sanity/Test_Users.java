@@ -21,11 +21,11 @@ public class Test_Users  extends BaseCase {
 
 		logger = report.startTest(" User Login Validation");
 		logger.log(LogStatus.INFO, "Sign In through FB");
-		Pages.Login().LogintoSpark();
+		Pages.Login().LogintoSpark("anzakibria@outlook.com","123456@@");
 		logger.log(LogStatus.PASS, "Log in to SparkXYZ successfuly");
 		
 	}
-	@Test(priority = 2, enabled = false)
+	@Test(priority = 2, enabled = true)
 	public void Test_OnboardValidation() throws InterruptedException {
 		System.out.println("===========================================================");
 		System.out.println("================= Test_OnboardValidation  =================");
@@ -57,7 +57,8 @@ public class Test_Users  extends BaseCase {
 				logger.log(LogStatus.PASS, "Education Page is successful");
 				}
 		logger.log(LogStatus.INFO, "Fill Education form On-Boarding Process");
-		String Statusedu= Pages.On_Boadring_Process().Education_Form("UCLA", "BSCS", "CS", "8", "2012", "12", "2016");
+		String institute= "UCLA";
+		String Statusedu= Pages.On_Boadring_Process().Education_Form(institute, "BSCS", "CS", "8", "2012", "12", "2016");
 		if (Statusedu !=""){
 			logger.log(LogStatus.FAIL, Statusedu);
 			}
@@ -113,16 +114,25 @@ public class Test_Users  extends BaseCase {
 			else{
 				logger.log(LogStatus.PASS, "Invite page is successful");
 				}
-	   logger.log(LogStatus.INFO, "Fill Reason Page On-Boarding Process");
-	   String Statusreason= Pages.On_Boadring_Process().Reason_to_join("Looking to join a startup");
-	   if (Statusreason !=""){
-			logger.log(LogStatus.FAIL, Statusreason);
-			}
-			else{
-				logger.log(LogStatus.PASS, "Reason page is successful");
+//	   logger.log(LogStatus.INFO, "Fill Reason Page On-Boarding Process");
+//	   String Statusreason= Pages.On_Boadring_Process().Reason_to_join("Looking to join a startup");
+//	   if (Statusreason !=""){
+//			logger.log(LogStatus.FAIL, Statusreason);
+//			}
+//			else{
+//				logger.log(LogStatus.PASS, "Reason page is successful");
+//				}
+	   if (institute== "UCLA"){
+		   String StatusUCLA= Pages.On_Boadring_Process().UclaUser();
+		   if (StatusUCLA !=""){
+				logger.log(LogStatus.FAIL, StatusUCLA);
 				}
+				else{
+					logger.log(LogStatus.PASS, "UCLA user succesfully On-boarded");
+					}
+	   }
 		}
-	@Test(priority = 3, enabled = false)
+	@Test(priority = 3, enabled = true)
 	public void Test_VentureCreation() throws InterruptedException {
 		System.out.println("===========================================================");
 		System.out.println("================= Test_VentureCreation ====================");
@@ -308,22 +318,31 @@ public class Test_Users  extends BaseCase {
 				logger.log(LogStatus.PASS, "Goto User Profile page is successful");
 				}
 		logger.log(LogStatus.INFO, "Verifying both Negative Positive Scenarios of Adding Experience to User Profile");
-//		String Expmessgae = Pages.User_Profile().Add_new_experience("TestingExp", "KTM", "2", "2010", "5", "2015");
-//		if (Expmessgae != ""){
-//			if (Expmessgae.contains("Negative Scenario Error:")){
-//				logger.log(LogStatus.FAIL,Expmessgae);
-//				logger.log(LogStatus.PASS, "Experience Record gets saved");	
-//			}
-//			else{
-//				logger.log(LogStatus.PASS, "Negative Scenarios of Experience Record are passed");	
-//				logger.log(LogStatus.FAIL,Expmessgae);
-//			}	
-//		}
-//		else{
-//			logger.log(LogStatus.PASS, "Negative Scenarios of Experience Record are passed");
-//			logger.log(LogStatus.PASS, "Experience Record gets saved");
-//		}
-//		logger.log(LogStatus.INFO, "Verifying both Negative Positive Scenarios of Adding Education to User Profile");
+		String ExpTitle= "TestingExp";
+		String Expmessgae = Pages.User_Profile().Add_new_experience(ExpTitle, "KTM", "2", "2010", "5", "2015");
+		if (Expmessgae != ""){
+			if (Expmessgae.contains("Negative Scenario Error:")){
+				logger.log(LogStatus.FAIL,Expmessgae);
+				logger.log(LogStatus.PASS, "Experience Record gets saved");	
+			}
+			else{
+				logger.log(LogStatus.PASS, "Negative Scenarios of Experience Record are passed");	
+				logger.log(LogStatus.FAIL,Expmessgae);
+			}	
+		}
+		else{
+			logger.log(LogStatus.PASS, "Negative Scenarios of Experience Record are passed");
+			logger.log(LogStatus.PASS, "Experience Record gets saved");
+		}
+		logger.log(LogStatus.INFO, "Delete Experience to User Profile");
+		String Expdel= Pages.User_Profile().delete_experience(ExpTitle);
+		if (Expdel !=""){
+			logger.log(LogStatus.FAIL,Expdel);
+			}
+			else{
+				logger.log(LogStatus.PASS, " Delete Experience is successful");
+			}
+		logger.log(LogStatus.INFO, "Verifying both Negative Positive Scenarios of Adding Education to User Profile");
 		String SchoolTitle= "Ghirardelli Square";
 		String Edumessgae = Pages.User_Profile().Add_new_education(SchoolTitle, "CS", "CS","2", "2010", "5", "2015");
 		if (Edumessgae != ""){
@@ -340,60 +359,304 @@ public class Test_Users  extends BaseCase {
 			logger.log(LogStatus.PASS, "Negative Scenarios of Education Record are passed");
 			logger.log(LogStatus.PASS, "Education Record gets saved");
 		}
+		logger.log(LogStatus.INFO, "Delete Education to User Profile");
 		String deledu = Pages.User_Profile().delete_eduction(SchoolTitle);
 		if ( deledu !=""){
 			logger.log(LogStatus.FAIL,deledu);
 			}
 			else{
-				logger.log(LogStatus.PASS, "Venture Website is successful");
+				logger.log(LogStatus.PASS, " Delete Education is successful");
 			}
-//		logger.log(LogStatus.INFO, "Verifying both Negative Positive Scenarios of Adding Volunteer Experience to User Profile");
-//		String VolExpmessgae = Pages.User_Profile().Add_new_volunteerexp("bbl", "Test", "Test", "11", "2016", "5", "2017");
-//		if (VolExpmessgae != ""){
-//			if (VolExpmessgae.contains("Negative Scenario Error:")){
-//				logger.log(LogStatus.FAIL,VolExpmessgae);
-//				logger.log(LogStatus.PASS, "Volunteer Experience Record gets saved");	
-//			}
-//			else{
-//				logger.log(LogStatus.PASS, "Negative Scenarios of Volunteer Experience Record are passed");	
-//				logger.log(LogStatus.FAIL,VolExpmessgae);
-//			}	
-//		}
-//		else{
-//			logger.log(LogStatus.PASS, "Negative Scenarios of Volunteer Experience Record are passed");
-//			logger.log(LogStatus.PASS, "Volunteer Experience Record gets saved");
-//		}
-//		logger.log(LogStatus.INFO, "Verifying both Negative Positive Scenarios of Adding Group to User Profile");
-//		String groupmessgae = Pages.User_Profile().Add_new_group("BBL", "QA", "5", "2000", "2", "2001");
-//		if (groupmessgae != ""){
-//			if (groupmessgae.contains("Negative Scenario Error:")){
-//				logger.log(LogStatus.FAIL,groupmessgae);
-//				logger.log(LogStatus.PASS, "Group Record gets saved");	
-//			}
-//			else{
-//				logger.log(LogStatus.PASS, "Negative Scenarios of Group Record are passed");	
-//				logger.log(LogStatus.FAIL,groupmessgae);
-//			}	
-//		}
-//		else{
-//			logger.log(LogStatus.PASS, "Negative Scenarios of Group Record are passed");
-//			logger.log(LogStatus.PASS, "Group Record gets saved");
-//		}
-//		logger.log(LogStatus.INFO, "Verifying both Negative Positive Scenarios of Adding AWard to User Profile");
-//		String awardmessgae = Pages.User_Profile().Add_new_award("Rising Talent", "KTM", "12", "2017");
-//		if (awardmessgae != ""){
-//			if (awardmessgae.contains("Negative Scenario Error:")){
-//				logger.log(LogStatus.FAIL,awardmessgae);
-//				logger.log(LogStatus.PASS, "AWard Record gets saved");	
-//			}
-//			else{
-//				logger.log(LogStatus.PASS, "Negative Scenarios of Award Record are passed");	
-//				logger.log(LogStatus.FAIL,awardmessgae);
-//			}	
-//		}
-//		else{
-//			logger.log(LogStatus.PASS, "Negative Scenarios of Award Record are passed");
-//			logger.log(LogStatus.PASS, "Award Record gets saved");
-//		}
+		logger.log(LogStatus.INFO, "Verifying both Negative Positive Scenarios of Adding Volunteer Experience to User Profile");
+		String OrgName = "bbl";
+		String VolExpmessgae = Pages.User_Profile().Add_new_volunteerexp(OrgName, "Test", "Test", "11", "2016", "5", "2017");
+		if (VolExpmessgae != ""){
+			if (VolExpmessgae.contains("Negative Scenario Error:")){
+				logger.log(LogStatus.FAIL,VolExpmessgae);
+				logger.log(LogStatus.PASS, "Volunteer Experience Record gets saved");	
+			}
+			else{
+				logger.log(LogStatus.PASS, "Negative Scenarios of Volunteer Experience Record are passed");	
+				logger.log(LogStatus.FAIL,VolExpmessgae);
+			}	
+		}
+		else{
+			logger.log(LogStatus.PASS, "Negative Scenarios of Volunteer Experience Record are passed");
+			logger.log(LogStatus.PASS, "Volunteer Experience Record gets saved");
+		}
+		logger.log(LogStatus.INFO, "Delete Volunteer to User Profile");
+		String deleVol = Pages.User_Profile().delete_voltuneerexperience(OrgName);
+		if ( deleVol !=""){
+			logger.log(LogStatus.FAIL,deleVol);
+			}
+			else{
+				logger.log(LogStatus.PASS, " Delete Volunteer is successful");
+			}
+		logger.log(LogStatus.INFO, "Verifying both Negative Positive Scenarios of Adding Group to User Profile");
+		String GroupPosition= "QA";
+		String groupmessgae = Pages.User_Profile().Add_new_group("BBL", GroupPosition, "5", "2000", "2", "2001");
+		if (groupmessgae != ""){
+			if (groupmessgae.contains("Negative Scenario Error:")){
+				logger.log(LogStatus.FAIL,groupmessgae);
+				logger.log(LogStatus.PASS, "Group Record gets saved");	
+			}
+			else{
+				logger.log(LogStatus.PASS, "Negative Scenarios of Group Record are passed");	
+				logger.log(LogStatus.FAIL,groupmessgae);
+			}	
+		}
+		else{
+			logger.log(LogStatus.PASS, "Negative Scenarios of Group Record are passed");
+			logger.log(LogStatus.PASS, "Group Record gets saved");
+		}
+		String deleGroup = Pages.User_Profile().Delete_Organization(GroupPosition);
+		if ( deleGroup !=""){
+			logger.log(LogStatus.FAIL,deleGroup);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Delete Group is successful");
+			}
+		logger.log(LogStatus.INFO, "Verifying both Negative Positive Scenarios of Adding AWard to User Profile");
+		String awardmessgae = Pages.User_Profile().Add_new_award("Rising Talent", "KTM", "12", "2017");
+		if (awardmessgae != ""){
+			if (awardmessgae.contains("Negative Scenario Error:")){
+				logger.log(LogStatus.FAIL,awardmessgae);
+				logger.log(LogStatus.PASS, "AWard Record gets saved");	
+			}
+			else{
+				logger.log(LogStatus.PASS, "Negative Scenarios of Award Record are passed");	
+				logger.log(LogStatus.FAIL,awardmessgae);
+			}	
+		}
+		else{
+			logger.log(LogStatus.PASS, "Negative Scenarios of Award Record are passed");
+			logger.log(LogStatus.PASS, "Award Record gets saved");
+		}
+		String deleaward = Pages.User_Profile().delete_Award("Rising Talent");
+		if ( deleaward !=""){
+			logger.log(LogStatus.FAIL,deleaward);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Delete Award is successful");
+			}
 	}	
+	@Test(priority = 5, enabled = true)
+	public void Test_VenturePage() throws InterruptedException {
+		System.out.println("===========================================================");
+		System.out.println("================= Test_VenturePage ====================");
+		System.out.println("===========================================================");
+		logger = report.startTest("Test_VenturePage");
+		String Navigation = Pages.Navigation_Page().GotoVenturePage();
+		if (Navigation !=""){
+			logger.log(LogStatus.FAIL, Navigation);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Goto User Profile page is successful");
+				}
+		String Title = "TestingVenture";
+		String openVen= Pages.VenturePage().open_Venture(Title);
+		if (openVen !=""){
+			logger.log(LogStatus.FAIL,  openVen);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Venture open successfully");
+				}
+		String VenProblem = Pages.VenturePage().VentureProblem("VentureProblem");
+		if (VenProblem !=""){
+			logger.log(LogStatus.FAIL,  VenProblem);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Venture for Problem successful");
+				}
+		String VenSol= Pages.VenturePage().VentureSolution("VentureSolution");
+		if (VenSol !=""){
+			logger.log(LogStatus.FAIL,  VenSol);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Venture Solution successful");
+				}
+		String venele= Pages.VenturePage().VentureOneliner("OneLinerElevatorPitch");
+		if (venele !=""){
+			logger.log(LogStatus.FAIL,  venele);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Venture OneLinerElevatorPitch successful");
+				}
+		String teamven= Pages.VenturePage().EditTeam("TEstingVEn@gmail.com", "QA");
+		if (teamven !=""){
+			logger.log(LogStatus.FAIL,  teamven);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Venture add team member successful");
+				}
+		String[] interestArray = new String[]{"DESIGN", "FASHION"};
+		String Cateven = Pages.VenturePage().VentureCategories(interestArray);
+		if (Cateven !=""){
+			logger.log(LogStatus.FAIL,  Cateven);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Venture categories successful");
+				}
+		String stageven = Pages.VenturePage().Venturebusinessstage("Beta", "Lifestyle", "Los Vegas");
+		if (stageven !=""){
+			logger.log(LogStatus.FAIL,  stageven);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Venture business stage is successful");
+				}
+		String imgven = Pages.VenturePage().VentureImage();
+		if (imgven !=""){
+			logger.log(LogStatus.FAIL,  imgven);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Venture Image successful");
+				}
+		String webven = Pages.VenturePage().WebsiteVenture("Sparkxyz.io");
+		if (webven !=""){
+			logger.log(LogStatus.FAIL,  webven);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Venture Website successful");
+				}
+		String[] primaryArray = new String[]{"ACCOUNTING","EDUCATION"};
+		String[] secondaryArray = new String[]{"TAX","LECTURING"};
+		String posven= Pages.VenturePage().VenPostion("QA", "Editing",  primaryArray,secondaryArray);
+		if (posven !=""){
+			logger.log(LogStatus.FAIL,  posven);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Venture Website successful");
+				}
+	}
+	@Test(priority = 6, enabled = true)
+	public void Test_NetworkPage() throws InterruptedException {
+		System.out.println("===========================================================");
+		System.out.println("================= Test_NetworkPage ====================");
+		System.out.println("===========================================================");
+		logger = report.startTest("Test_NetworkPage");
+		logger.log(LogStatus.INFO, "Navigate to Network Page");
+		String Navigation = Pages.Navigation_Page().GoToNetworkPage();
+		if (Navigation !=""){
+			logger.log(LogStatus.FAIL, Navigation);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Goto User Network Page is successful");
+				}	
+		String ConnectionName= "Lokat Kohli";
+		logger.log(LogStatus.INFO, "Search Connection");
+		String FirstName[]= ConnectionName.split(" ");
+		String SearchConn= Pages.MyNetwork().SearchNetwork(FirstName[0]);
+		if (SearchConn !=""){
+			logger.log(LogStatus.FAIL,SearchConn);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Search Connection is send successful");
+				}
+		logger.log(LogStatus.INFO, "Ignore Connection");
+		String ReceivedRequest= "Annie Zain";
+		String IgnoreConn= Pages.MyNetwork().IgnoreRequest(ReceivedRequest);
+		if (IgnoreConn !=""){
+			logger.log(LogStatus.FAIL,IgnoreConn);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Ignore Connection is send successful");
+				}
+		logger.log(LogStatus.INFO, "Send Connection Request");
+		String RequestConn= Pages.MyNetwork().SendConnectionRequest(ConnectionName);
+		if (RequestConn !=""){
+			logger.log(LogStatus.FAIL,RequestConn);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Connection Request is send successful");
+				}	
+		logger.log(LogStatus.INFO, "Accept Connection Request");
+		String AccReq= Pages.MyNetwork().AcceptRequest(ReceivedRequest);
+		if (AccReq!=""){
+			logger.log(LogStatus.FAIL,AccReq);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Connection Request is accepted successful");
+				}	
+		logger.log(LogStatus.INFO, "Disconnect Connection Request");
+		String diccon= Pages.MyNetwork().disconnectRequest();
+		if (diccon!=""){
+			logger.log(LogStatus.FAIL,diccon);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Disconnect request is successful");
+				}	
+		}
+	@Test(priority = 7, enabled = true)
+	public void Test_SearchPage() throws InterruptedException {
+		System.out.println("===========================================================");
+		System.out.println("================= Test_SearchPage ====================");
+		System.out.println("===========================================================");
+		logger = report.startTest("Test_SearchPage");
+		logger.log(LogStatus.INFO, "Navigate to Network Page");
+		String Navigation = Pages.Navigation_Page().GoToSearchPage();
+		if (Navigation !=""){
+			logger.log(LogStatus.FAIL, Navigation);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Goto User Search Page is successful");
+				}
+		logger.log(LogStatus.INFO, "Search Page");
+		String Search= Pages.Search_Page().OpenFilter("Passions");
+		if (Search!=""){
+			logger.log(LogStatus.FAIL,Search);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Passions filter Sucessful");
+				}	
+		String Searchskill= Pages.Search_Page().OpenFilter("Skill");
+		if (Searchskill!=""){
+			logger.log(LogStatus.FAIL,Searchskill);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Skill filter is successful");
+				}	
+		String Searchedu= Pages.Search_Page().OpenFilter("Education");
+		if (Searchedu!=""){
+			logger.log(LogStatus.FAIL,Searchedu);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Education filter is successful");
+				}	
+		String SearchBusiness= Pages.Search_Page().OpenFilter("Business phase");
+		if (SearchBusiness!=""){
+			logger.log(LogStatus.FAIL,SearchBusiness);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Business phase filter is successful");
+				}	
+		String SearchVentureType= Pages.Search_Page().OpenFilter("Type of venture");
+		if (SearchVentureType!=""){
+			logger.log(LogStatus.FAIL,SearchVentureType);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Type of venture filter is successful");
+				}	
+		String SearchCity= Pages.Search_Page().OpenFilter("City");
+		if (SearchCity!=""){
+			logger.log(LogStatus.FAIL,SearchCity);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Search City filter is successful");
+				}	
+}
+	@Test(priority = 8, enabled = false)
+	public void Test_AdminPortal() throws InterruptedException {
+		System.out.println("===========================================================");
+		System.out.println("================= Test_AdminPortal ====================");
+		System.out.println("===========================================================");
+		logger = report.startTest("Test_AdminPortal");
+		logger.log(LogStatus.INFO, "Admin Portal login");
+		String adlog= Pages.Admin_login().logintoadminportal("admin@sparkxyz.io", "password");
+		if (adlog!=""){
+			logger.log(LogStatus.FAIL,adlog);
+			}
+			else{
+				logger.log(LogStatus.PASS, "Test_AdminPortal login is Sucessfull");
+				}	
+		}
 }

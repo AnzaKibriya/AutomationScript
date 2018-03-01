@@ -30,5 +30,25 @@ public class Pages {
 		PageFactory.initElements(BaseCase.driver, pg);
 		return pg;
 	}
+	public static VenturePage VenturePage() {
+		VenturePage pg = new VenturePage(BaseCase.driver);
+		PageFactory.initElements(BaseCase.driver, pg);
+		return pg;
+	}
+	public static  MyNetwork  MyNetwork() {
+		 MyNetwork pg = new  MyNetwork(BaseCase.driver);
+		PageFactory.initElements(BaseCase.driver, pg);
+		return pg;
+	}
+	public static  Search_Page  Search_Page() {
+		Search_Page pg = new  Search_Page(BaseCase.driver);
+		PageFactory.initElements(BaseCase.driver, pg);
+		return pg;
+	}
+	public static  Admin_login  Admin_login() {
+		Admin_login pg = new  Admin_login(BaseCase.driver);
+		PageFactory.initElements(BaseCase.driver, pg);
+		return pg;
+	}
 
-}//CreateVenture
+}//Admin_login

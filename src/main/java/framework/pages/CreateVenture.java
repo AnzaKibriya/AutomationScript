@@ -682,6 +682,26 @@ public String Add_Position(String position, String Description, String [] intere
 					}
 				}
 			 driver.findElement(By.id("add-venture-position")).click();
+			 WebElement positioncard= driver.findElement(By.className("create-proj-cards"));
+			 WebElement skillsdiv= positioncard.findElement(By.className("card__item__labels"));
+			 List<WebElement> skills= skillsdiv.findElements(By.className("venture-details__category-option"));
+			 
+			 int skillSize = skills.size();
+			 
+			 for (int i=0;i< skillSize; i++)
+			 {	
+				 String Skilllabel= skills.get(i).getText();
+				 for(int j=i+1; j< skillSize; j++)
+				 {
+					 String Skilllabel2= skills.get(j).getText();
+					 if (Skilllabel.equals(Skilllabel2))
+					 {
+						 display_error= "Position is added but skills are repeating"; 
+					 }
+				 }
+				 
+				 
+			 }
 			 btnNext.click();
 		
 	}

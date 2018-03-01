@@ -286,7 +286,7 @@ public class On_Boadring_Process {
 			jbt.clear();
 			WebElement cmpy= driver.findElement(By.id("onboarding_company"));
 			cmpy.clear();
-			WebElement lct = driver.findElement(By.id("onboarding_company"));
+			WebElement lct = driver.findElement(By.id("onboarding_company_location"));
 			lct.clear();
 			WebElement srtmnth= driver.findElement(By.id("experience-start_month"));
 			srtmnth.clear();
@@ -339,9 +339,11 @@ public class On_Boadring_Process {
 			WebElement cmpy= driver.findElement(By.id("onboarding_company"));
 			cmpy.clear();
 			cmpy.sendKeys(company);
-			WebElement lct = driver.findElement(By.id("onboarding_company"));
+			WebElement lct = driver.findElement(By.id("onboarding_company_location"));
 			lct.clear();
 			lct.sendKeys(location);
+			lct.sendKeys(Keys.DOWN);
+		    lct.sendKeys(Keys.ENTER);
 			WebElement srtmnth= driver.findElement(By.id("experience-start_month"));
 			srtmnth.clear();
 			srtmnth.sendKeys(start_month);
@@ -627,6 +629,40 @@ public class On_Boadring_Process {
 			}
 			driver.findElement(By.cssSelector("button[type='submit']")).click();			
     }
+		catch(Exception e){
+		    System. out.println("In Exception block.");
+		    fetch_error = e.getMessage();
+		}
+		finally{
+			try{
+				driver.findElement(By.className("error-message"));
+				System.out.println("On Error page '404 error' ");
+			}
+			catch(Exception e){
+				System.out.println("blah");
+			}
+    	 //System.out.println(error);
+    	 if (fetch_error != null){
+    	 fetch_error = fetch_error.toString();
+//    	 System.out.println(error);
+    	 String[] errorarray = fetch_error.split("Command duration or timeout");
+    	 for(String w :errorarray){  
+         System.out.println(w);
+         display_error = w;
+         break;
+     }
+		
+	}
+		}
+		return display_error;
+	}
+ public String UclaUser(){
+	 String fetch_error = null;
+		String display_error = "";
+		try{
+			driver.findElement(By.linkText("View Ventures")).click();
+			Extensions.WaitForPageFullyLoaded();
+			}   
 		catch(Exception e){
 		    System. out.println("In Exception block.");
 		    fetch_error = e.getMessage();

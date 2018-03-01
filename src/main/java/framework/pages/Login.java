@@ -12,7 +12,7 @@ public class Login {
 	public Login(WebDriver Driver) {
 		driver = Driver;
 	}
-	public String LogintoSpark() {
+	public String LogintoSpark(String Email, String Password) {
 		String fetch_error = null;
 		String display_error = "";
 		try{
@@ -21,13 +21,13 @@ public class Login {
 //		Elem.click();
 		driver.findElement(By.xpath("//*[@id='example-menu']/div[2]/ul/li[4]/a")).click();		
 		Extensions.WaitForPageFullyLoaded();
-		Extensions.ScrollDownPage();
-		WebElement elem1= driver.findElement(By.className("facebook-btn"));
+//		Extensions.ScrollDownPage();
+		WebElement elem1= driver.findElement(By.xpath("/html/body/section/div/div[2]/div[1]/a"));
 		elem1.click();
 		WebElement EmailElem = driver.findElement(By.id("email"));
-		EmailElem.sendKeys("anzakibria@outlook.com");
+		EmailElem.sendKeys(Email);
 		WebElement Pswd = driver.findElement(By.id("pass"));
-		Pswd.sendKeys("126131ANZ@");
+		Pswd.sendKeys(Password);
 		WebElement Elembtn= driver.findElement(By.id("loginbutton"));
 		Elembtn.click(); 
 		}
